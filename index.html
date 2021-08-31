@@ -7,7 +7,7 @@
         body{
             height: 100%;
             width: auto;
-           
+            margin: 0;
             
         }
          #first{
@@ -38,7 +38,7 @@
         #main{
             position: relative;
             width: 100%;
-            height: 900px;
+            
             margin-top: 70px;
             z-index: -1;
             /* background-color: darkblue; */
@@ -58,7 +58,7 @@
         }
         #sec div a{
             text-decoration: none;
-            color: rgb(126, 90, 84);
+            color: rgb(73, 30, 22);
             font-size: 20px;
             margin: 15px;
         
@@ -76,12 +76,41 @@
             border-bottom-left-radius: 
             25%;
             border-bottom-right-radius: 
-            50px;
+            60px;
             overflow: hidden;
-
+            width: 25%;
+            
             float: right;
             
         }
+        #img img{
+            width: 125%;
+        }
+        #about{
+            display: inline-block;
+            
+            width: 65%;
+        }
+        #about h1{
+            width: 100%;
+            
+            text-align: center;
+            font-size: 50px;
+            margin-right: auto;
+        }
+        table {
+            margin: 0;
+        }
+        td a img{
+            border-radius: 50%;
+        }
+        td{
+            float: none;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -95,7 +124,7 @@
             <section id="sec">
                 <div><a href="#"> About</a></div>
                 <div><a href="#">Contact</a></div>
-                <div><a href="#">Resume</a></div>
+                <div><a href="#">Profile</a></div>
                 
             </section>
             </section>
@@ -104,14 +133,27 @@
 
     <section id="main">
     <section id="about">
-
+        <h1><p>Hi, I'm Mohit.</p></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, blanditiis sunt laborum vero, dicta tempore alias id iste veniam magni unde velit totam nam eos. Rerum veniam error dolorem aliquam.</p>
     </section>
     <div id="img"> 
         <img src="./img.png"/>
     </div>
     </section>
+    <table>
+        <tbody><tr>
+            <td><a href="#"><img src="https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Profile"></a>
+            Profile</td>
+            <td><a href="#"><img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Resume"></a>
+            Resume</td>
+            <td><a href="#"><img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Project"></a>
+            Projects</td>
+            <td><a href="#"><img src="https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Contact"></a>
+            Contact</td>
+        </tr>
+    </tbody></table>
 
-    <footer style="background-color: mediumspringgreen;">
+    <footer style="background-color: rgb(37, 236, 160);">
 
         <div>
             <h1>shahmohit50@gmail.com</h1>
