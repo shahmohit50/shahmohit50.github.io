@@ -1,185 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MS Info</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Shah | Full Stack Developer & SAP Expert | Mumbai, India</title>
+    <meta name="description" content="Mohit Shah - Full Stack Developer with 3+ years of SAP development experience at Vistex. Specializing in JavaScript, React, Node.js, and enterprise solutions. Available for opportunities.">
+    <meta name="keywords" content="Mohit Shah, Full Stack Developer, SAP Developer, Web Developer Mumbai, React Developer, Node.js Developer, JavaScript Expert, IT Engineer Mumbai">
+    <meta name="author" content="Mohit Shah">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shahmohit50.github.io/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shahmohit50.github.io/">
+    <meta property="og:title" content="Mohit Shah | Full Stack Developer & SAP Expert">
+    <meta property="og:description" content="Full Stack Developer with 3+ years of SAP development experience. Specializing in JavaScript, React, Node.js, and enterprise solutions.">
+    <meta property="og:image" content="https://shahmohit50.github.io/images/mohit-shah-developer.jpg">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://shahmohit50.github.io/">
+    <meta name="twitter:title" content="Mohit Shah | Full Stack Developer & SAP Expert">
+    <meta name="twitter:description" content="Full Stack Developer with 3+ years of SAP development experience. Specializing in JavaScript, React, Node.js, and enterprise solutions.">
+    <meta name="twitter:image" content="https://shahmohit50.github.io/images/mohit-shah-developer.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Person Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mohit Shah",
+        "url": "https://shahmohit50.github.io/",
+        "image": "https://shahmohit50.github.io/images/mohit-shah-developer.jpg",
+        "jobTitle": "Full Stack Developer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Vistex Asia Pacific LTD"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Thakur College of Engineering and Technology Mumbai"
+        },
+        "knowsAbout": ["SAP Development", "Full Stack Development", "JavaScript", "React", "Node.js", "Web Development"],
+        "sameAs": [
+            "https://github.com/shahmohit50",
+            "https://linkedin.com/in/YOUR-LINKEDIN-ID",
+            "https://twitter.com/YOUR-TWITTER-HANDLE"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mumbai",
+            "addressCountry": "India"
+        }
+    }
+    </script>
+    
     <style>
-        body{
-            height: 100%;
-            width: auto;
-            margin: 0;
-            
+        /* Add your CSS here - keeping it minimal for SEO focus */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
         }
-         #first{
-            width: 30%;
-            height: 40px;
-            
-            padding-top: 20px;
-            padding-bottom: 10px;
-            font-size: 40px;
-            display: inline-block;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-             background-color: rgb(138, 230, 47); 
-        }
-        #first a{
-            text-decoration: none;
-            text-align: left;
-            padding-left: 22%;
-            color: rgb(12, 11, 11);
-        }
-        #sec{
-            width: 70%;
-            float: right;
-            height: 40px;
-            text-align: right;
-            padding-top: 30px;
-            background-color: rgb(138, 230, 47); 
-        }
-        #main{
-            position: relative;
-            width: 100%;
-            margin-top: 70px;
-            z-index: -1;
-            /* background-color: darkblue; */
-
-            
-        }
-        #panel{
-            position: fixed;
-            float: left;
-            width: 100%;
-            opacity: 70%;
-            top: 0;
-            left: 0;
-        }
-        #sec div{
-            display: inline-block;
-        }
-        #sec div a{
-            text-decoration: none;
-            color: rgb(73, 30, 22);
-            font-size: 20px;
-            margin: 15px;
-        
-        }
-        #icons{
-            text-align: center;
-        }
-        #icons a{
-            
-            margin: 20px;
-            text-decoration: none;
-            color:maroon;
-        }
-        #img{
-            border-bottom-left-radius: 
-            25%;
-            border-bottom-right-radius: 
-            60px;
-            overflow: hidden;
-            width: 25%;
-            height: 575px;
-            float: right;
-            
-        }
-        #img img{
-            width: 125%;
-            
-        }
-        #about{
-            display: inline-block;
-            
-            width: 65%;
-        }
-        #about h1{
-            width: 100%;
-            
-            text-align: center;
-            font-size: 50px;
-            margin-right: auto;
-        }
-        #para{
-            font-size: 20px ;
-            text-align: center;
-            }
-        table {
-            margin: 0;
-        }
-        td a img{
-            border-radius: 50%;
-        }
-        td{
-            float: none;
-            font-size: 20px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            text-align: center;
-        }
-        
+        header { padding: 40px 0; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1a1a1a; }
+        h2 { font-size: 1.8rem; margin: 30px 0 15px; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h3 { font-size: 1.3rem; margin: 20px 0 10px; color: #34495e; }
+        p { margin-bottom: 15px; }
+        .tagline { font-size: 1.2rem; color: #666; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+        .skills-list li { background: #3498db; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+        .experience-item { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .contact-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .contact-links a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .contact-links a:hover { text-decoration: underline; }
+        img { max-width: 200px; border-radius: 50%; }
+        section { margin-bottom: 40px; }
+        footer { text-align: center; padding: 30px 0; border-top: 1px solid #eee; margin-top: 40px; }
     </style>
 </head>
 <body>
- 
     <header>
-        <nav>
-            <section id="panel">
-            <section id="first">
-               <a href="#"><b>M.S</b></a> 
-            </section>
-            <section id="sec">
-                <div><a href="#"> About</a></div>
-                <div><a href="#">Contact</a></div>
-                <div><a href="#">Profile</a></div>
-                
-            </section>
-            </section>
-        </nav>
+        <img src="YOUR-PROFILE-IMAGE-URL" alt="Mohit Shah - Full Stack Developer based in Mumbai, India" width="200" height="200">
+        <h1>Mohit Shah</h1>
+        <p class="tagline">Full Stack Developer | SAP Expert | IT Engineer</p>
     </header>
-
-    <section id="main">
-    <section id="about">
-        <h1><p>Hi, I'm Mohit.</p></h1>
-        <p id="para">Working as a SAP Developer at Vistex Asia Pacific LTD with an experience of 3years, looking as career transition to Full Stack Developer.<br>
-            Graduated in 2018 from Thakur College of Engineering and Technology Mumbai as an IT Engineering.<br>
-            Big Fan of Call of Duty games this includes the recent warzone <br>
-            Joined Geekster to help me in this transition phase to master my skills ahead.<br> 
-            And with a Goal to add one more skill in my masters list<br>
-            <br>That's all about me. Thanks you for going through the site.🤵🏻
-        </p>
-    </section>
-    <div id="img"> 
-        <img src="./img.png"/>
-    </div>
-    </section>
-    <table>
-        <tbody><tr>
-            <td><a href="#"><img src="https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Profile"></a>
-            Profile</td>
-            <td><a href="#"><img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Resume"></a>
-            Resume</td>
-            <td><a href="#"><img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Project"></a>
-            Projects</td>
-            <td><a href="#"><img src="https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" width="300px" height="300px" alt="Contact"></a>
-            Contact</td>
-        </tr>
-    </tbody></table>
-
-    <footer style="background-color: rgb(37, 236, 160);">
-
-        <div>
-            <h1>shahmohit50@gmail.com</h1>
-            <h2>Always down to collaborate. Let's get in touch ✌️.</h2>
-        </div>
-        <div id="icons">
-            <a href="#" class="fa fa-facebook"></a>
-<a href="#" class="fa fa-twitter"></a>
-<a href="#" class="fa fa-instagram"></a> 
-<a href="#" class="fa fa-linkedin"></a>  
-        </div>
-        <div style="text-align: center;">
-            Made with care.<br>
-            Copyright &copy Mohit Shah
-        </div>
+    
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a <strong>Full Stack Developer</strong> with <strong>3+ years of professional experience</strong> as a SAP Developer at <strong>Vistex Asia Pacific LTD</strong>. Currently transitioning into full stack development, I bring a unique combination of enterprise software expertise and modern web development skills.</p>
+            <p>I graduated in <strong>2018</strong> from <strong>Thakur College of Engineering and Technology, Mumbai</strong> with a degree in <strong>IT Engineering</strong>. I'm passionate about building scalable web applications and continuously expanding my technical skillset.</p>
+            <p>Currently enrolled at <strong>Geekster</strong> to accelerate my transition and master advanced full stack technologies including React, Node.js, and modern JavaScript frameworks.</p>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <h3>Programming Languages</h3>
+            <ul class="skills-list">
+                <li>JavaScript</li>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>ABAP</li>
+                <li>SQL</li>
+            </ul>
+            
+            <h3>Frameworks & Libraries</h3>
+            <ul class="skills-list">
+                <li>React.js</li>
+                <li>Node.js</li>
+                <li>Express.js</li>
+                <li>Bootstrap</li>
+            </ul>
+            
+            <h3>Tools & Platforms</h3>
+            <ul class="skills-list">
+                <li>SAP</li>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+                <li>REST APIs</li>
+            </ul>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <article class="experience-item">
+                <h3>SAP Developer</h3>
+                <p><strong>Vistex Asia Pacific LTD</strong> | 2021 - Present</p>
+                <ul>
+                    <li>Developed and maintained SAP enterprise solutions</li>
+                    <li>Collaborated with cross-functional teams to deliver business requirements</li>
+                    <li>Implemented custom ABAP programs and reports</li>
+                    <li>Optimized system performance and troubleshot technical issues</li>
+                </ul>
+            </article>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <article class="experience-item">
+                <h3>Bachelor of Engineering - IT Engineering</h3>
+                <p><strong>Thakur College of Engineering and Technology, Mumbai</strong> | Graduated 2018</p>
+            </article>
+            <article class="experience-item">
+                <h3>Full Stack Development Program</h3>
+                <p><strong>Geekster</strong> | Currently Enrolled</p>
+            </article>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Coming soon - Currently building portfolio projects to showcase my full stack development skills.</p>
+            <!-- Add your projects here as you complete them -->
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>I'm open to full stack developer opportunities. Let's connect!</p>
+            <div class="contact-links">
+                <a href="https://github.com/shahmohit50" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/YOUR-LINKEDIN-ID" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Mohit Shah. Full Stack Developer based in Mumbai, India.</p>
     </footer>
-
 </body>
 </html>
