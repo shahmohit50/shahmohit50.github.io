@@ -47,12 +47,17 @@
     ]
   }
   </script>
+
+  <!-- Your CSS (reuse from homepage) -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 </head>
 <body>
+  <!-- Header include -->
   {% include header.html %}
-  
-  <main>
-    <nav aria-label="breadcrumb">
+
+  <main class="container">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="breadcrumbs">
       <ol>
         <li><a href="{{ site.url }}/">Home</a></li>
         <li><a href="{{ site.url }}/blog/">Blog</a></li>
@@ -60,12 +65,29 @@
       </ol>
     </nav>
 
-    <article>
-      <h1>{{ page.title }}</h1>
-      {{ content }}
+    <!-- Blog Post -->
+    <article class="post">
+      <header class="post-header">
+        <h1>{{ page.title }}</h1>
+        <p class="post-meta">By {{ page.author }} | {{ page.date | date: "%B %d, %Y" }}</p>
+        {% if page.image %}
+        <img src="{{ site.url }}{{ page.image }}" alt="{{ page.title }}" class="post-image">
+        {% endif %}
+      </header>
+
+      <div class="post-content">
+        {{ content }}
+      </div>
+
+      <!-- Optional social share buttons -->
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank">Share on Twitter</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank">Share on LinkedIn</a>
+      </div>
     </article>
   </main>
 
+  <!-- Footer include -->
   {% include footer.html %}
 </body>
 </html>
