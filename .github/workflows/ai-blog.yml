@@ -1,1 +1,35 @@
+name: AI Blog Writer
 
+on:
+  schedule:
+    - cron: "0 4 * * 1,3,5"
+  workflow_dispatch:
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate blog post
+        run: python scripts/generate_post.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+      - name: Commit post
+        run: |
+          git config --global user.name "AI Blog Bot"
+          git config --global user.email "bot@example.com"
+          git add .
+          git commit -m "AI generated blog post" || echo "No changes"
+          git push
