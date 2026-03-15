@@ -5,7 +5,7 @@ import os
 GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 
 prompt = """
-Write a 700 word blog post about AI experiments that can run on low-end hardware.
+Write a blog post about AI experiments that can run on low-end hardware.
 Focus on practical tutorials and tools.
 
 Structure:
