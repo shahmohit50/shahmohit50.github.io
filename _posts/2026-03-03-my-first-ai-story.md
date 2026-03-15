@@ -9,11 +9,31 @@ author: "Mohitraj Shah"
 
 I started experimenting with AI video generation using just a ThinkPad T495.
 
-Instead of heavy models, I use:
+## Hardware Setup
+
+I used a ThinkPad T495 with limited RAM and CPU-only processing.
+
+## Tools Used
 
 - Stable Diffusion (CPU mode)
 - Image animation techniques
 - Frame interpolation
 - FFmpeg assembly
 
-This is my journey of building AI content without expensive GPUs.
+## Workflow
+
+First I generate base frames using Stable Diffusion in CPU mode.
+
+Then I animate the frames using interpolation techniques.
+
+Finally I assemble everything using FFmpeg.
+
+## Results
+
+Even on low-end hardware the results were surprisingly usable.
+
+---
+
+## Want More AI Experiments?
+
+Follow this blog for tutorials on running AI tools on low-end hardware.
