@@ -1,26 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:#f7f7f7;
+      color:#222;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:#0a66c2;
+    }
+
+    header{
+      background:white;
+      border-bottom:1px solid #eee;
+      padding:20px 0;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:0 20px;
+    }
+
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .nav-links a{
+      margin-left:20px;
+      font-weight:500;
+    }
+
+    .hero{
+      padding:40px 0;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:32px;
+    }
+
+    .hero p{
+      color:#666;
+      margin-top:8px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap:40px;
+      margin-top:30px;
+    }
+
+    main{
+      background:white;
+      padding:30px;
+      border-radius:8px;
+    }
+
+    aside{
+      background:white;
+      padding:25px;
+      border-radius:8px;
+      height:fit-content;
+    }
+
+    .sidebar-section{
+      margin-bottom:30px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      margin-top:40px;
+      font-size:14px;
+      color:#666;
+    }
+
+    @media(max-width:900px){
+      .layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+  </style>
 </head>
-<body style="font-family: Arial; max-width: 800px; margin: auto; padding: 20px;">
+
+<body>
 
 <header>
-  <h1><a href="/" style="text-decoration:none;color:black;">{{ site.title }}</a></h1>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/blog">Blog</a>
-  </nav>
-  <hr>
+  <div class="container navbar">
+    <div>
+      <strong><a href="/">{{ site.title }}</a></strong>
+    </div>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
 </header>
 
-{{ content }}
+<div class="container hero">
+  <h1>AI Experiments Lab</h1>
+  <p>Running AI tools, experiments and tutorials on low-end hardware.</p>
+</div>
 
-<hr>
+<div class="container layout">
+
+  <main>
+    {{ content }}
+  </main>
+
+  <aside>
+
+    <div class="sidebar-section">
+      <h3>About</h3>
+      <p>Experiments with AI tools, automation and creative projects using simple hardware.</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Popular Topics</h3>
+      <ul>
+        <li><a href="#">Stable Diffusion</a></li>
+        <li><a href="#">AI Video</a></li>
+        <li><a href="#">Low-End AI Setup</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Support</h3>
+      <p>Future space for ads / affiliate tools.</p>
+    </div>
+
+  </aside>
+
+</div>
+
 <footer>
-  <p>© 2026 Mohitraj | Built with Jekyll</p>
+  © {{ site.time | date: "%Y" }} Mohitraj Shah • Built with Jekyll
 </footer>
 
 </body>
