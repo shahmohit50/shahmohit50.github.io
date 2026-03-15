@@ -1,93 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }} | Mohitraj Shah Portfolio</title>
-  <meta name="description" content="{{ page.description }}">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+---
+layout: default
+---
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ page.title }}">
-  <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:image" content="{{ site.url }}{{ page.image }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:type" content="article">
+<nav class="breadcrumbs">
+  <a href="/">Home</a> ›
+  <a href="/blog">Blog</a> ›
+  <span>{{ page.title }}</span>
+</nav>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.description }}">
-  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+<article class="post">
 
-  <!-- BlogPosting Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ page.title }}",
-    "description": "{{ page.description }}",
-    "image": "{{ site.url }}{{ page.image }}",
-    "author": { "@type": "Person", "name": "{{ page.author }}" },
-    "publisher": { "@type": "Organization", "name": "Mohitraj Shah Portfolio", "logo": { "@type": "ImageObject", "url": "{{ site.url }}/img.png" } },
-    "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.date | date_to_xmlschema }}",
-    "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
-  }
-  </script>
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
 
-  <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ site.url }}/blog/" },
-      { "@type": "ListItem", "position": 3, "name": "{{ page.title }}" }
-    ]
-  }
-  </script>
+    <div class="post-meta">
+      By {{ page.author }} • {{ page.date | date: "%B %d, %Y" }}
+    </div>
 
-  <!-- Your CSS (reuse from homepage) -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-</head>
-<body>
-  <!-- Header include -->
-  {% include header.html %}
+    {% if page.image %}
+      <img src="{{ page.image }}" alt="{{ page.title }}" class="post-image">
+    {% endif %}
+  </header>
 
-  <main class="container">
-    <!-- Breadcrumbs -->
-    <nav aria-label="breadcrumb" class="breadcrumbs">
-      <ol>
-        <li><a href="{{ site.url }}/">Home</a></li>
-        <li><a href="{{ site.url }}/blog/">Blog</a></li>
-        <li>{{ page.title }}</li>
-      </ol>
-    </nav>
+  <div class="post-content">
+    {{ content }}
+  </div>
 
-    <!-- Blog Post -->
-    <article class="post">
-      <header class="post-header">
-        <h1>{{ page.title }}</h1>
-        <p class="post-meta">By {{ page.author }} | {{ page.date | date: "%B %d, %Y" }}</p>
-        {% if page.image %}
-        <img src="{{ site.url }}{{ page.image }}" alt="{{ page.title }}" class="post-image">
-        {% endif %}
-      </header>
+  <div class="share-buttons">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank">
+      Share on Twitter
+    </a>
 
-      <div class="post-content">
-        {{ content }}
-      </div>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank">
+      Share on LinkedIn
+    </a>
+  </div>
 
-      <!-- Optional social share buttons -->
-      <div class="share-buttons">
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank">Share on Twitter</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank">Share on LinkedIn</a>
-      </div>
-    </article>
-  </main>
-
-  <!-- Footer include -->
-  {% include footer.html %}
-</body>
-</html>
+</article>
