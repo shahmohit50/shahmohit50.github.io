@@ -122,35 +122,43 @@ def extract_topics(headlines):
 # ==============================
 def generate_blog(topic, headlines):
     prompt = f"""
-    Write in a style that is:
-    - Curious and slightly informal
-    - Clear but not dumbed down
-    - Like a smart blogger, not a textbook
+Write a deep-dive blog post about this trending AI topic:
 
-    Write a blog post about this AI topic:
-    
     "{topic}"
-    
-    Use these real-world news ideas as inspiration:
+
+    Use these news headlines as context:
     {headlines}
 
-    Keep language simple for non-technical readers.
+    The blog should feel like a Medium article.
+
     IMPORTANT:
-    - Write like a human explaining this to a friend
-    - Use a conversational tone (not robotic)
-    - Add small opinions or observations
-    - Include relatable examples from everyday life
-    - Make the reader feel curious or surprised
-    - Avoid sounding like a textbook
-        
+    - Focus on helping the reader actually understand AND try it
+    - Write like a human, slightly opinionated
+    - Include practical steps if possible
+
     Structure:
-    Intro (hook the reader with something interesting relatable frustation/facts/questions/short story )
-    ## What’s happening?
-    ## Why this is actually a big deal
-    ## A simple real-life analogy
-    ## Where this could go next
-    ## Final thoughts (slightly opinionated or reflective)
-    
+
+    Intro (why everyone is suddenly talking about this)
+
+    ## What is this and why is it trending?
+    (Explain simply, no jargon)
+
+    ## Why people are excited (and skeptical)
+    (Add some perspective, not just hype)
+
+    ## How you can try this yourself
+    (Step-by-step, simple setup if possible)
+
+    ## Real-world use cases
+    (Make it relatable)
+
+    ## Limitations (very important)
+    (Be honest — adds credibility)
+
+    ## Final thoughts
+    (Insightful, slightly opinionated)
+
+    Keep it beginner-friendly but insightful.
 
     Return markdown only.
     """
