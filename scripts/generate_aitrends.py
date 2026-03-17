@@ -88,22 +88,27 @@ def call_llm(prompt):
 # ==============================
 def extract_topics(headlines):
     prompt = f"""
-    From these headlines, extract 5 UNIQUE AI topics.
-    - Trending or gaining hype
-    - New tools, models, or platforms
-    - Something people may want to try themselves
+    From these headlines, extract 5 SPECIFIC and TRENDING AI topics.
     
-    Rules:
-    - No duplicates
-    - Combine similar ideas
-    - Beginner-friendly wording
-    - Max 5 topics
-    - Avoid generic topics like "AI in healthcare"
-
+    IMPORTANT:
+    - Do NOT give generic categories like "AI in healthcare"
+    - Each topic must refer to a SPECIFIC development, tool, model, or event
+    - Make it feel like something people are actively talking about online
+    - Include names if possible (tools, companies, models)
+    
+    Bad examples:
+    - "AI in finance"
+    - "Job displacement by AI"
+    
+    Good examples:
+    - "New open-source AI agent frameworks like OpenClaw gaining traction"
+    - "AI video generation tools becoming usable for creators"
+    - "Local LLMs running on consumer laptops"
+    
+    Return ONLY a valid JSON array.
+    
     Headlines:
     {headlines}
-
-    Return ONLY a valid JSON array.
     """
 
     result = call_llm(prompt)
