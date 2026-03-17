@@ -116,10 +116,10 @@ def fetch_github_trending(limit=GITHUB_TRENDING_LIMIT):
 def extract_trends(headlines):
     titles = "\n".join([h["title"] for h in headlines])
     prompt = f"""
-Extract 8 specific AI trends from these headlines.
-- Avoid generic categories like 'AI in business'
+Extract exactly 8 specific AI trends from these headlines.
+- Avoid generic categories like 'AI in business'.
 - Focus on real tools, models, or events.
-- Return JSON array of strings only.
+- Output ONLY a JSON array of strings. Do NOT include explanations or reasoning.
 
 Headlines:
 {titles}
