@@ -99,14 +99,16 @@ def extract_topics(headlines):
     Headlines:
     {headlines}
 
-    Return a Python list.
+    Return ONLY a valid JSON array.
     """
 
     result = call_llm(prompt)
 
     try:
-        return ast.literal_eval(result)
+        # return ast.literal_eval(result)
+         return json.loads(result)
     except:
+        print("❌ Parsing failed:", e)
         return []
 
 
