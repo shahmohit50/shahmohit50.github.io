@@ -18,6 +18,18 @@ TUTORIAL_MODEL = "moonshotai/kimi-k2-instruct-0905"  # Optional tutorial section
 
 MAX_BLOGS_PER_DAY = 4
 
+# Reddit config
+REDDIT_SUBREDDITS = ["MachineLearning", "ArtificialIntelligence"]
+REDDIT_LIMIT = 20
+
+# Product Hunt API
+PRODUCT_HUNT_API_KEY = os.environ.get("PRODUCT_HUNT_API_KEY")
+PRODUCT_HUNT_LIMIT = 20
+
+# GitHub Trending
+GITHUB_TRENDING_URL = "https://ghapi.huchen.dev/repositories"  # unofficial API
+GITHUB_TRENDING_LIMIT = 20
+
 # ------------------------------
 # UTILS
 # ------------------------------
@@ -32,7 +44,6 @@ def save_used_topics(topics):
         json.dump(topics, f, indent=2)
 
 def call_groq_api(model, prompt, max_tokens=3000, temperature=0.7):
-    """Call GROQ LLM API"""
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {GROQ_API_KEY}",
@@ -53,8 +64,51 @@ def call_groq_api(model, prompt, max_tokens=3000, temperature=0.7):
 # ------------------------------
 def fetch_google_rss(rss_url="https://news.google.com/rss/search?q=AI&hl=en-US&gl=US&ceid=US:en"):
     feed = feedparser.parse(rss_url)
-    headlines = [{"title": entry.title, "link": entry.link} for entry in feed.entries]
+    headlines = [{"title": entry.title, "link": entry.link, "source": "Google News"} for entry in feed.entries]
     return headlines
+
+def fetch_reddit(subreddits=REDDIT_SUBREDDITS, limit=REDDIT_LIMIT):
+    headers = {"User-Agent": "AutoBlogBot/1.0"}
+    all_posts = []
+    for subreddit in subreddits:
+        url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit={limit}"
+        resp = requests.get(url, headers=headers)
+        if resp.status_code != 200:
+            continue
+        data = resp.json()
+        for post in data["data"]["children"]:
+            all_posts.append({"title": post["data"]["title"], "link": post["data"]["url"], "source": f"Reddit/{subreddit}", "popularity": post["data"]["score"]})
+    return all_posts
+
+def fetch_product_hunt(limit=PRODUCT_HUNT_LIMIT):
+    if not PRODUCT_HUNT_API_KEY:
+        return []
+    headers = {"Authorization": f"Bearer {PRODUCT_HUNT_API_KEY}"}
+    url = f"https://api.producthunt.com/v2/api/graphql"
+    query = {
+        "query": """
+        { posts(order: VOTES, first: %d) { edges { node { name tagline url } } } }
+        """ % limit
+    }
+    resp = requests.post(url, headers=headers, json=query)
+    posts = []
+    try:
+        edges = resp.json()["data"]["posts"]["edges"]
+        for edge in edges:
+            node = edge["node"]
+            posts.append({"title": f"{node['name']}: {node['tagline']}", "link": node['url'], "source": "Product Hunt"})
+    except:
+        pass
+    return posts
+
+def fetch_github_trending(limit=GITHUB_TRENDING_LIMIT):
+    resp = requests.get(GITHUB_TRENDING_URL)
+    repos = []
+    if resp.status_code == 200:
+        data = resp.json()[:limit]
+        for r in data:
+            repos.append({"title": f"{r['name']} ({r['description']})", "link": r['url'], "source": "GitHub"})
+    return repos
 
 # ------------------------------
 # STEP 2: EXTRACT TRENDS
@@ -75,7 +129,6 @@ Headlines:
         trends = json.loads(trends_json)
         return trends
     except:
-        # fallback: simple split by lines if malformed
         return [t.strip() for t in trends_json.split("\n") if t.strip()]
 
 # ------------------------------
@@ -152,10 +205,12 @@ tags: [AI, Tutorial, {topic}]
 # MAIN PIPELINE
 # ------------------------------
 def main():
-    print("🚀 Fetching headlines...")
-    headlines = fetch_google_rss()
+    os.makedirs(POSTS_DIR, exist_ok=True)
     
-    print(f"📰 Found {len(headlines)} headlines")
+    print("🚀 Fetching headlines...")
+    headlines = fetch_google_rss() + fetch_reddit() + fetch_product_hunt() + fetch_github_trending()
+    print(f"📰 Collected {len(headlines)} headlines from multiple sources")
+
     trends = extract_trends(headlines)
     print(f"🧠 Extracted trends: {trends}")
     
@@ -185,5 +240,4 @@ def main():
 # RUN
 # ------------------------------
 if __name__ == "__main__":
-    os.makedirs(POSTS_DIR, exist_ok=True)
     main()
