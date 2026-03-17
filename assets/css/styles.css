@@ -1,0 +1,45 @@
+/* Hero */
+.hero {
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Blog Cards */
+.post-card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  transition: all 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.post-card h2 {
+  margin-bottom: 5px;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.read-more {
+  color: #0077cc;
+  font-weight: 500;
+  text-decoration: none;
+}
