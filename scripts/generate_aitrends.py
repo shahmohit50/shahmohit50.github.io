@@ -155,7 +155,7 @@ Write a deep-dive blog post about this trending AI topic:
     (Step-by-step, simple setup if possible)
 
     ## Real-world use cases
-    (Make it relatable)
+    ( Provide specific and *accurate* examples where {topic} is used. Do NOT mention unrelated companies or products.)
 
     ## Limitations (very important)
     (Be honest — adds credibility)
