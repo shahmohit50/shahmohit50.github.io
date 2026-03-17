@@ -19,7 +19,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests feedparser rapidfuzz
 
       - name: Generate blog post
         run: python scripts/generate_post.py
