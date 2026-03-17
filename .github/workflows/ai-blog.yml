@@ -25,7 +25,12 @@ jobs:
         run: python scripts/generate_post.py
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-
+          
+      - name: Generate Trend blog post
+        run: python scripts/generate_aitrends.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          
       - name: Commit post
         run: |
           git config --global user.name "AI Blog Bot"
