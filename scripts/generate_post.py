@@ -88,7 +88,7 @@ def call_llm(prompt):
 # ==============================
 def extract_topics(headlines):
     prompt = f"""
-    From these headlines, extract 4 UNIQUE AI topics.
+    From these headlines, extract 5 UNIQUE AI topics.
 
     Rules:
     - No duplicates
@@ -118,22 +118,35 @@ def extract_topics(headlines):
 # ==============================
 def generate_blog(topic, headlines):
     prompt = f"""
-    Write a beginner-friendly blog post about this AI topic:
+    Write in a style that is:
+    - Curious and slightly informal
+    - Clear but not dumbed down
+    - Like a smart blogger, not a textbook
 
+    Write a blog post about this AI topic:
+    
     "{topic}"
-
-    Use this context from recent news:
+    
+    Use these real-world news ideas as inspiration:
     {headlines}
 
     Keep language simple for non-technical readers.
-
+    IMPORTANT:
+    - Write like a human explaining this to a friend
+    - Use a conversational tone (not robotic)
+    - Add small opinions or observations
+    - Include relatable examples from everyday life
+    - Make the reader feel curious or surprised
+    - Avoid sounding like a textbook
+        
     Structure:
-    Intro
-    ## What is this?
-    ## Why it matters
-    ## Real-life example
-    ## Simple explanation of how it works
-    ## Conclusion
+    Intro (hook the reader with something interesting relatable frustation/facts/questions/short story )
+    ## What’s happening?
+    ## Why this is actually a big deal
+    ## A simple real-life analogy
+    ## Where this could go next
+    ## Final thoughts (slightly opinionated or reflective)
+    
 
     Return markdown only.
     """
