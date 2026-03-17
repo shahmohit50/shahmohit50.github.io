@@ -208,7 +208,8 @@ def main():
     os.makedirs(POSTS_DIR, exist_ok=True)
     
     print("🚀 Fetching headlines...")
-    headlines = fetch_google_rss() + fetch_reddit() + fetch_product_hunt() + fetch_github_trending()
+    # headlines = fetch_google_rss() + fetch_reddit() + fetch_product_hunt() + fetch_github_trending()
+    headlines = fetch_google_rss() + fetch_reddit() + fetch_product_hunt()
     print(f"📰 Collected {len(headlines)} headlines from multiple sources")
 
     trends = extract_trends(headlines)
