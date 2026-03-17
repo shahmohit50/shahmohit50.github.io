@@ -89,12 +89,16 @@ def call_llm(prompt):
 def extract_topics(headlines):
     prompt = f"""
     From these headlines, extract 5 UNIQUE AI topics.
-
+    - Trending or gaining hype
+    - New tools, models, or platforms
+    - Something people may want to try themselves
+    
     Rules:
     - No duplicates
     - Combine similar ideas
     - Beginner-friendly wording
-    - Max 4 topics
+    - Max 5 topics
+    - Avoid generic topics like "AI in healthcare"
 
     Headlines:
     {headlines}
