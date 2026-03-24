@@ -43,3 +43,51 @@
   font-weight: 500;
   text-decoration: none;
 }
+body {
+  background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
+}
+
+/* Cards */
+.post-card {
+  transition: all 0.3s ease;
+}
+.post-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: #22d3ee;
+}
+
+/* Typography */
+.prose {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  color: #22d3ee;
+  margin-top: 2rem;
+}
+
+.prose p {
+  margin-top: 1rem;
+  color: #d1d5db;
+}
+
+/* Code blocks */
+pre {
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+/* Links */
+a:hover {
+  text-shadow: 0 0 6px rgba(0,255,255,0.6);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
