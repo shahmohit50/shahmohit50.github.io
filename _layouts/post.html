@@ -2,38 +2,48 @@
 layout: default
 ---
 
-<nav class="breadcrumbs">
-  <a href="/">Home</a> ›
-  <a href="/blog">Blog</a> ›
-  <span>{{ page.title }}</span>
-</nav>
+<div id="progress-bar" class="fixed top-0 left-0 h-1 bg-cyan-400 z-50"></div>
 
-<article class="post">
+<article class="max-w-3xl mx-auto px-4 py-10">
 
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
+  <h1 class="text-4xl font-bold text-cyan-400 mb-4">
+    {{ page.title }}
+  </h1>
 
-    <div class="post-meta">
-      By {{ page.author }} • {{ page.date | date: "%B %d, %Y" }}
-    </div>
+  <p class="text-gray-400 mb-8">
+    {{ page.date | date: "%b %d, %Y" }} • {{ content | number_of_words | divided_by:200 }} min read
+  </p>
 
-    {% if page.image %}
-      <img src="{{ page.image }}" alt="{{ page.title }}" class="post-image">
-    {% endif %}
-  </header>
-
-  <div class="post-content">
+  <div class="prose">
     {{ content }}
   </div>
 
-  <div class="share-buttons">
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank">
-      Share on Twitter
-    </a>
+  <!-- Tags -->
+  {% if page.tags %}
+  <div class="mt-10">
+    {% for tag in page.tags %}
+      <span class="text-xs bg-cyan-700 px-2 py-1 rounded mr-2">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
 
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank">
-      Share on LinkedIn
-    </a>
+  <!-- Related Posts -->
+  <h3 class="text-xl mt-12 mb-4">Related Posts</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    {% for post in site.posts limit:4 %}
+      <a href="{{ post.url }}" class="block p-4 bg-gray-800 rounded hover:bg-gray-700">
+        {{ post.title }}
+      </a>
+    {% endfor %}
   </div>
 
 </article>
+
+<script>
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / height) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+});
+</script>
