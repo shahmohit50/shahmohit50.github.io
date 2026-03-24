@@ -1,0 +1,112 @@
+---
+layout: default
+title: Blog
+---
+
+<section class="max-w-6xl mx-auto px-4 py-10">
+
+  <!-- Title -->
+  <h1 class="text-4xl font-bold text-cyan-400 mb-8">Blog</h1>
+
+  <!-- Featured Post -->
+  {% assign featured = site.posts.first %}
+  <div class="mb-12 p-8 bg-gray-800 rounded-xl border border-cyan-500 hover:shadow-lg transition">
+    <h2 class="text-3xl text-cyan-300 font-semibold">
+      <a href="{{ featured.url }}">{{ featured.title }}</a>
+    </h2>
+    <p class="text-gray-400 mt-2">
+      {{ featured.date | date: "%b %d, %Y" }} • {{ featured.content | number_of_words | divided_by:200 }} min read
+    </p>
+    <p class="mt-4 text-gray-300">
+      {{ featured.excerpt | strip_html | truncate: 160 }}
+    </p>
+    <a href="{{ featured.url }}" class="inline-block mt-4 text-blue-400 hover:text-blue-300">
+      Read more →
+    </a>
+  </div>
+
+  <!-- Search -->
+  <input id="search-input"
+         type="text"
+         placeholder="Search articles..."
+         class="w-full mb-8 p-3 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:border-cyan-500">
+
+  <!-- Posts Grid -->
+  <div id="posts-container" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+    {% for post in site.posts offset:1 %}
+    <div class="post-card p-6 bg-gray-800 rounded-xl border border-gray-700 transition">
+      
+      <h2 class="text-xl font-semibold text-cyan-400">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+
+      <p class="text-sm text-gray-400 mt-2">
+        {{ post.date | date: "%b %d, %Y" }} • {{ post.content | number_of_words | divided_by:200 }} min read
+      </p>
+
+      <p class="mt-3 text-gray-300">
+        {{ post.excerpt | strip_html | truncate: 120 }}
+      </p>
+
+      <a href="{{ post.url }}" class="inline-block mt-4 text-blue-400 hover:text-blue-300">
+        Read more →
+      </a>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</section>
+
+<!-- Fuse.js -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+
+<script>
+const posts = [{% for post in site.posts %}{
+  title: {{ post.title | jsonify }},
+  content: {{ post.content | strip_html | jsonify }},
+  url: {{ post.url | jsonify }}
+}{% if forloop.last == false %},{% endif %}{% endfor %}];
+
+const fuse = new Fuse(posts, { keys: ['title','content'], threshold: 0.3 });
+
+const input = document.getElementById('search-input');
+const container = document.getElementById('posts-container');
+
+input.addEventListener('input', e => {
+  const query = e.target.value.trim();
+
+  if (!query) {
+    location.reload();
+    return;
+  }
+
+  const results = fuse.search(query).map(r => r.item);
+
+  if (results.length === 0) {
+    container.innerHTML = "<p class='text-gray-400'>No results found</p>";
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  results.forEach(post => {
+    const div = document.createElement('div');
+    div.className = "p-6 bg-gray-800 rounded-xl border border-gray-700";
+
+    div.innerHTML = `
+      <h2 class="text-xl text-cyan-400">
+        <a href="${post.url}">${post.title}</a>
+      </h2>
+      <p class="mt-2 text-gray-300">${post.content.slice(0,120)}...</p>
+    `;
+
+    fragment.appendChild(div);
+  });
+
+  container.innerHTML = '';
+  container.appendChild(fragment);
+});
+</script>
