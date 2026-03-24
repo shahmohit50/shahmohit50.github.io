@@ -2,161 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/app.css">
-
-  <style>
-
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:#f7f7f7;
-      color:#222;
-      line-height:1.6;
-    }
-
-    a{
-      text-decoration:none;
-      color:#0a66c2;
-    }
-
-    header{
-      background:white;
-      border-bottom:1px solid #eee;
-      padding:20px 0;
-    }
-
-    .container{
-      max-width:1100px;
-      margin:auto;
-      padding:0 20px;
-    }
-
-    .navbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .nav-links a{
-      margin-left:20px;
-      font-weight:500;
-    }
-
-    .hero{
-      padding:40px 0;
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:32px;
-    }
-
-    .hero p{
-      color:#666;
-      margin-top:8px;
-    }
-
-    .layout{
-      display:grid;
-      grid-template-columns: 2fr 1fr;
-      gap:40px;
-      margin-top:30px;
-    }
-
-    main{
-      background:white;
-      padding:30px;
-      border-radius:8px;
-    }
-
-    aside{
-      background:white;
-      padding:25px;
-      border-radius:8px;
-      height:fit-content;
-    }
-
-    .sidebar-section{
-      margin-bottom:30px;
-    }
-
-    footer{
-      text-align:center;
-      padding:30px;
-      margin-top:40px;
-      font-size:14px;
-      color:#666;
-    }
-
-    @media(max-width:900px){
-      .layout{
-        grid-template-columns:1fr;
-      }
-    }
-
-  </style>
 </head>
+{% assign current_url = page.url | default: "" %}
+<body class="site-body{% if page.page_class %} {{ page.page_class }}{% endif %}">
+  <div class="aurora-layer" aria-hidden="true"></div>
 
-<body>
-
-<header>
-  <div class="container navbar">
-    <div>
-      <strong><a href="/">{{ site.title }}</a></strong>
+  <header class="site-header">
+    <div class="site-width header-inner">
+      <a href="/" class="site-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">AI Experiments Lab</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/" {% if current_url == "/" %}class="is-active"{% endif %}>Home</a>
+        <a href="/blog.html" {% if page.layout == "post" or current_url == "/blog/" or current_url == "/blog.html" or page.title == "Blog" %}class="is-active"{% endif %}>Blog</a>
+        <a href="/#projects">Projects</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
+  <div class="site-width">
+    {% if page.show_page_intro != false and page.layout != "post" %}
+      <section class="page-intro">
+        <p class="page-intro-kicker">Hands-on AI Build Notes</p>
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.description | default: "Practical AI stories, workflow breakdowns, and experiments designed for real-world constraints." }}</p>
+      </section>
+    {% endif %}
+
+    <div class="content-shell{% if page.layout == 'post' %} content-shell-post{% endif %}">
+      <main class="main-panel{% if page.layout == 'post' %} main-panel-post{% endif %}">
+        {{ content }}
+      </main>
+
+      {% unless page.layout == "post" %}
+        {% assign total_posts = site.posts | size %}
+        {% assign latest_post = site.posts.first %}
+        <aside class="side-panel">
+          <section class="panel-card">
+            <h2>Inside The Lab</h2>
+            <p>Notes from building and testing AI workflows on practical hardware, with zero fluff.</p>
+          </section>
+
+          <section class="panel-card">
+            <h2>Quick Snapshot</h2>
+            <div class="quick-stats">
+              <div>
+                <strong>{{ total_posts }}</strong>
+                <span>Total posts</span>
+              </div>
+              <div>
+                <strong>{% if latest_post %}{{ latest_post.date | date: "%b %d" }}{% else %}N/A{% endif %}</strong>
+                <span>Latest update</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-card">
+            <h2>Latest Stories</h2>
+            <ul class="quick-links">
+              {% for post in site.posts limit:5 %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </section>
+
+          <section class="panel-card">
+            <h2>Popular Tags</h2>
+            {% if site.tags.size > 0 %}
+              <div class="tag-stack">
+                {% for tag in site.tags limit:8 %}
+                  <a href="/blog.html#tag-{{ tag[0] | slugify }}" class="tag-pill">{{ tag[0] }} <span>{{ tag[1] | size }}</span></a>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p class="panel-muted">Add `tags` in post front matter and tag chips will appear automatically.</p>
+            {% endif %}
+          </section>
+        </aside>
+      {% endunless %}
     </div>
   </div>
-</header>
 
-<div class="container hero">
-  <h1>AI Experiments Lab</h1>
-  <p>Running AI tools, experiments and tutorials on low-end hardware.</p>
-</div>
-
-<div class="container layout">
-
-  <main>
-    {{ content }}
-  </main>
-
-  <aside>
-
-    <div class="sidebar-section">
-      <h3>About</h3>
-      <p>Experiments with AI tools, automation and creative projects using simple hardware.</p>
+  <footer class="site-footer">
+    <div class="site-width footer-inner">
+      <p>&copy; {{ site.time | date: "%Y" }} {{ site.author | default: "Mohitraj Shah" }}</p>
+      <a href="/blog.html">Explore all posts</a>
     </div>
-
-    <div class="sidebar-section">
-      <h3>Popular Topics</h3>
-      <ul>
-        <li><a href="#">Stable Diffusion</a></li>
-        <li><a href="#">AI Video</a></li>
-        <li><a href="#">Low-End AI Setup</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-section">
-      <h3>Support</h3>
-      <p>Future space for ads / affiliate tools.</p>
-    </div>
-
-  </aside>
-
-</div>
-
-<footer>
-  © {{ site.time | date: "%Y" }} Mohitraj Shah • Built with Jekyll
-</footer>
-
+  </footer>
 </body>
 </html>

@@ -1,0 +1,132 @@
+{% assign featured = site.posts.first %}
+{% assign post_count = site.posts | size %}
+{% assign total_words = 0 %}
+{% assign oldest_post = site.posts | last %}
+{% for post in site.posts %}
+  {% assign word_count = post.content | number_of_words %}
+  {% assign total_words = total_words | plus: word_count %}
+{% endfor %}
+{% assign total_minutes = total_words | divided_by: 200 | plus: 1 %}
+
+{% if post_count > 0 %}
+  {% assign featured_words = featured.content | number_of_words %}
+  {% assign featured_minutes = featured_words | divided_by: 200 | plus: 1 %}
+{% endif %}
+
+<section class="blog-hero">
+  <div class="hero-copy">
+    <p class="hero-kicker">Fresh Build Log</p>
+    <h1>Modern AI Notes Built For Real Constraints</h1>
+    <p>Actionable experiments, quick explainers, and practical ideas you can test right away.</p>
+    <div class="hero-stats">
+      <div>
+        <strong>{{ post_count }}</strong>
+        <span>Published stories</span>
+      </div>
+      <div>
+        <strong>{{ total_minutes }}</strong>
+        <span>Total read minutes</span>
+      </div>
+      <div>
+        <strong>{% if oldest_post %}{{ oldest_post.date | date: "%Y" }}{% else %}Now{% endif %}</strong>
+        <span>Archive starts</span>
+      </div>
+    </div>
+  </div>
+
+  {% if featured %}
+    <article class="featured-card">
+      <p class="featured-label">Featured</p>
+      <h2><a href="{{ featured.url }}">{{ featured.title }}</a></h2>
+      <p class="featured-meta">{{ featured.date | date: "%b %d, %Y" }} &middot; {{ featured_minutes }} min read</p>
+      <p class="featured-excerpt">{{ featured.description | default: featured.excerpt | strip_html | truncate: 190 }}</p>
+      <a href="{{ featured.url }}" class="featured-link">Read featured story</a>
+    </article>
+  {% endif %}
+</section>
+
+<section class="blog-controls">
+  <div class="blog-search-shell">
+    <label for="blog-search-input" class="sr-only">Search blog posts</label>
+    <input id="blog-search-input" type="search" placeholder="Search title, summary, or tags...">
+    <button id="blog-search-clear" type="button" hidden>Clear</button>
+  </div>
+
+  <div class="blog-toolbar">
+    <div id="blog-filter-row" class="blog-filter-row" aria-label="Topic filters">
+      <button type="button" class="filter-chip is-active" data-filter="all" id="tag-all">All topics</button>
+    </div>
+
+    <label class="sort-wrap" for="blog-sort">
+      Sort
+      <select id="blog-sort">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="title">Title A-Z</option>
+        <option value="relevance">Best match</option>
+      </select>
+    </label>
+  </div>
+
+  <p id="blog-results-status" class="results-status">Showing latest stories</p>
+</section>
+
+<section class="blog-results"{% if featured %} data-featured-url="{{ featured.url }}"{% endif %}>
+  <div id="blog-results-grid" class="blog-grid" aria-live="polite"></div>
+  <p id="blog-empty-state" class="blog-empty" hidden>No stories matched your search. Try fewer words or switch topic filters.</p>
+</section>
+
+<template id="blog-card-template">
+  <article class="blog-card">
+    <a class="blog-card-link" href="#">
+      <p class="blog-card-date"></p>
+      <h3 class="blog-card-title"></h3>
+      <p class="blog-card-excerpt"></p>
+      <div class="blog-card-tags"></div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read"></span>
+        <span class="blog-card-action">Read story</span>
+      </div>
+    </a>
+  </article>
+</template>
+
+<noscript>
+  <section class="blog-results">
+    <div class="blog-grid">
+      {% for post in site.posts %}
+        {% assign words = post.content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 | plus: 1 %}
+        <article class="blog-card">
+          <a class="blog-card-link" href="{{ post.url }}">
+            <p class="blog-card-date">{{ post.date | date: "%b %d, %Y" }}</p>
+            <h3 class="blog-card-title">{{ post.title }}</h3>
+            <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+            <div class="blog-card-footer">
+              <span class="blog-card-read">{{ minutes }} min read</span>
+              <span class="blog-card-action">Read story</span>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</noscript>
+
+<script id="blog-posts-data" type="application/json">
+[
+{% for post in site.posts %}
+{
+  "title": {{ post.title | jsonify }},
+  "url": {{ post.url | jsonify }},
+  "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+  "description": {{ post.description | default: post.excerpt | strip_html | strip_newlines | jsonify }},
+  "date_iso": "{{ post.date | date: '%Y-%m-%d' }}",
+  "date_pretty": "{{ post.date | date: '%b %d, %Y' }}",
+  "reading_minutes": {{ post.content | number_of_words | divided_by: 200 | plus: 1 }},
+  "tags": [{% if post.tags %}{% for tag in post.tags %}{{ tag | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}]
+}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
+</script>
+<script src="/assets/js/blog-search.js" defer></script>

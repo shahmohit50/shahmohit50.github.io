@@ -1,49 +1,78 @@
 ---
 layout: default
+show_page_intro: false
+page_class: page-post
 ---
 
-<div id="progress-bar" class="fixed top-0 left-0 h-1 bg-cyan-400 z-50"></div>
+<div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
 
-<article class="max-w-3xl mx-auto px-4 py-10">
+<article class="post-article">
+  <a href="/blog.html" class="post-back-link">&larr; Back to all posts</a>
 
-  <h1 class="text-4xl font-bold text-cyan-400 mb-4">
-    {{ page.title }}
-  </h1>
+  {% assign post_words = content | number_of_words %}
+  {% assign post_minutes = post_words | divided_by: 200 | plus: 1 %}
+  <header class="post-header">
+    <p class="post-kicker">{{ page.date | date: "%B %d, %Y" }}</p>
+    <h1 class="post-title">{{ page.title }}</h1>
 
-  <p class="text-gray-400 mb-8">
-    {{ page.date | date: "%b %d, %Y" }} • {{ content | number_of_words | divided_by:200 }} min read
-  </p>
+    <p class="post-meta">
+      {% if page.author %}By {{ page.author }} &middot; {% endif %}{{ post_minutes }} min read
+    </p>
 
-  <div class="prose">
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
     {{ content }}
   </div>
 
-  <!-- Tags -->
-  {% if page.tags %}
-  <div class="mt-10">
-    {% for tag in page.tags %}
-      <span class="text-xs bg-cyan-700 px-2 py-1 rounded mr-2">{{ tag }}</span>
-    {% endfor %}
-  </div>
+  {% if page.tags and page.tags.size > 0 %}
+    <section class="post-tags" aria-label="Post tags">
+      {% for tag in page.tags %}
+        <span class="tag-pill">{{ tag }}</span>
+      {% endfor %}
+    </section>
   {% endif %}
 
-  <!-- Related Posts -->
-  <h3 class="text-xl mt-12 mb-4">Related Posts</h3>
-  <div class="grid md:grid-cols-2 gap-4">
-    {% for post in site.posts limit:4 %}
-      <a href="{{ post.url }}" class="block p-4 bg-gray-800 rounded hover:bg-gray-700">
-        {{ post.title }}
-      </a>
-    {% endfor %}
-  </div>
+  <section class="related-posts" aria-label="Related posts">
+    <h2>Keep Reading</h2>
+    <div class="related-grid">
+      {% assign related_count = 0 %}
+      {% for post in site.posts %}
+        {% if post.url != page.url and related_count < 3 %}
+          {% assign related_words = post.content | number_of_words %}
+          {% assign related_minutes = related_words | divided_by: 200 | plus: 1 %}
+          <a href="{{ post.url }}" class="related-card">
+            <p>{{ post.date | date: "%b %d, %Y" }} &middot; {{ related_minutes }} min read</p>
+            <h3>{{ post.title }}</h3>
+            <span>Read story</span>
+          </a>
+          {% assign related_count = related_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
 
 </article>
 
 <script>
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / height) * 100;
-  document.getElementById("progress-bar").style.width = progress + "%";
-});
+(function () {
+  const progress = document.getElementById("reading-progress");
+  if (!progress) {
+    return;
+  }
+
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? window.scrollY / max : 0;
+    const clamped = Math.min(Math.max(ratio, 0), 1);
+    progress.style.transform = "scaleX(" + clamped + ")";
+  }
+
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+})();
 </script>
