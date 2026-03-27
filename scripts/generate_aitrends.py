@@ -148,17 +148,55 @@ Write a deep-dive blog post about this trending AI topic:
     ## What is this and why is it trending?
     (Explain simply, no jargon)
 
-    ## Why people are excited (and skeptical)
-    (Add some perspective, not just hype)
+    ---
+**News Headline**: "{Insert Headline Here}"
+**Summary**: "{Insert 1-2 sentence summary of the announcement}"
+**Company**: {Insert company name}
+**Key Claims**: {Bullet-point the company’s main claims}
 
-    ## How you can try this yourself
-    (Step-by-step, simple setup if possible)
+---
+### **RULES**
+- **Name names**: Call out executives, investors, or competitors by name.
+- **Use past scandals**: Reference similar past incidents (e.g., “Remember when [Company] did [X] in [Year]?”).
+- **End with a question**: Leave readers with a **provocative, open-ended** question.
+- **No fluff**: Every sentence must either **inform, enrage, or amuse**.
 
-    ## Real-world use cases
-    ( Provide specific and *accurate* examples where {topic} is used. Do NOT mention unrelated companies or products.)
+---
+### **EXAMPLE OUTPUT** (For reference)
+# **Anthropic’s Claude 3.5: Ethical AI or Ethical Theater?**
 
-    ## Limitations (very important)
-    (Be honest — adds credibility)
+**The Official Story**
+Anthropic today unveiled Claude 3.5, calling it “the most ethical AI ever built.” New features include “constitutional guardrails” and “bias self-audits.” CEO Dario Amodei claimed it’s “a model that finally aligns with human values.”
+
+**What They’re Not Saying**
+✅ **The Good**: Claude 3.5 refuses to generate harmful content—unlike *some* competitors (*cough* Meta *cough*).
+⚠️ **The Spin**: “Ethical” here means “safe for enterprises,” not “safe for society.” Remember when Google said the same about Bard?
+❌ **The Lie**: Anthropic’s own safety board quit last month over “unresolved ethical concerns.” (Source: [The Information](#))
+
+**Twitter vs. Reality**
+> *@AI_Enthusiast: “Finally, an AI with a conscience!”*
+> *@RealEthicist: “Lol, the same company that sold Claude 2 to the Pentagon is lecturing us on ethics.”*
+> *@VC_Hustler: “Ethical = ‘won’t badmouth our investors.’”*
+
+**The Hypocrisy No One’s Talking About**
+Anthropic’s “constitutional AI” schtick is a smokescreen for their real innovation: **corporate absolution**. By framing ethics as a technical problem, they’re selling indemnity to CEOs. (“See? Our AI has a *constitution*—we’re not liable!”)
+
+**Devil’s Advocate**
+*What if this is the only way?*
+In a world where every AI startup races to the bottom, Anthropic’s theater might be the lesser evil. But when “ethical” becomes a marketing term, who’s left to ask the hard questions?
+
+*But here’s the catch:*
+Anthropic’s “safety” is just **risk management for shareholders**. Their constitution is as binding as a Terms of Service no one reads.
+
+**Prediction**
+Within 6 months, Claude 3.5 will be caught generating misinfo—just like every “safe” model before it. The only difference? Anthropic’s PR team will call it “a learning opportunity.”
+
+**How to Prepare**
+- **Developers**: Audit Claude’s outputs like it’s 2016 and you’re Facebook.
+- **Users**: Treat “ethical AI” like “organic cigarettes.” It’s better, but still bad for you.
+- **Regulators**: Stop falling for self-audits. Demand **third-party red-teaming**.
+
+---
 
     ## Final thoughts
     (Insightful, slightly opinionated)
