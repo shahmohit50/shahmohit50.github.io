@@ -149,10 +149,10 @@ Write a deep-dive blog post about this trending AI topic:
     (Explain simply, no jargon)
 
     ---
-**News Headline**: "{Insert Headline Here}"
-**Summary**: "{Insert 1-2 sentence summary of the announcement}"
-**Company**: {Insert company name}
-**Key Claims**: {Bullet-point the company’s main claims}
+**News Headline**: 
+**Summary**: 
+**Company**: 
+**Key Claims**:
 
 ---
 ### **RULES**
