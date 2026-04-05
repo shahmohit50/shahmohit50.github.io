@@ -127,107 +127,115 @@ def extract_topics(headlines):
 # ==============================
 def generate_blog(topic, headlines):
     prompt = f"""
-You are a top-tier tech blogger writing for a high-quality Medium-style publication.
+Write a high-quality, opinionated tech blog post about:
 
-Your goal is NOT just to inform — but to make the reader:
+"{topic}"
 
-* Understand the topic deeply
-* Stay engaged till the end
-* Feel smarter after reading
-
----
-
-## INPUT
-
-Topic: "{topic}"
-
-News context:
+Use these news headlines as grounding (not as a script):
 {headlines}
 
 ---
 
-## WRITING STYLE (STRICT)
+## 🎯 GOAL
 
-* Write like a human, slightly opinionated but not dramatic
-* Avoid robotic or generic phrasing
-* Use short, punchy paragraphs (2–4 lines max)
-* Prefer clarity over jargon
-* Sound like an experienced engineer explaining things simply
+This should feel like a sharp, modern blog someone would actually read and share.
+
+Not corporate. Not boring. Not robotic.
 
 ---
 
-## STRUCTURE (FOLLOW EXACTLY)
+## ✍️ WRITING STYLE (STRICT)
 
-# {topic} — What’s Actually Going On?
-
-## 🚀 Why This Is Blowing Up Right Now
-
-Start with a strong hook.
-Explain WHY this topic is suddenly trending (not just what happened).
-
----
-
-## 🧠 What This Actually Means (Simple Explanation)
-
-Break it down like you're explaining to a smart beginner.
-Avoid buzzwords unless you explain them.
+* Write like a smart engineer with opinions
+* Be slightly provocative, but not cringe
+* Cut fluff completely
+* Use short paragraphs (2–4 lines max)
+* Every section should either:
+  → explain something clearly
+  → challenge a narrative
+  → or give practical insight
 
 ---
 
-## 🏗️ What’s Really Happening Behind the Scenes
+## 🧠 STRUCTURE
 
-Go deeper:
+# {topic} — What’s Actually Happening?
 
-* How the tech works (high level)
-* What companies are doing
-* What makes this different from before
+## 🚀 Why Everyone Is Talking About This
 
----
-
-## ⚖️ The Reality Check
-
-Give a balanced take:
-
-* What’s genuinely impressive
-* What’s overhyped or unclear
-
-Be honest. This is where most blogs fail.
+Hook the reader.
+Explain the *real* reason this is trending (not surface-level).
 
 ---
 
-## 🛠️ Can You Actually Use This?
+## 🧩 What This Actually Is (No BS Explanation)
+
+Break it down simply.
+If it's complex, simplify it like you're explaining to a dev friend.
+
+---
+
+## 🏗️ What’s Really Going On Behind the Scenes
+
+* What companies are actually doing
+* What’s new vs what’s recycled hype
+* Mention real players if relevant
+
+---
+
+## ⚖️ The Truth (Not the Hype)
+
+This is critical:
+
+* What’s impressive?
+* What’s overhyped or misleading?
+
+If something feels like marketing — call it out.
+
+---
+
+## 🛠️ Should You Care / Use This?
 
 Make it practical:
 
-* Who should care
+* Who should pay attention
 * Real-world use cases
-* Tools / links / ways to try it
+* How someone could try it (if possible)
 
 ---
 
-## 🔮 What Happens Next
+## 🔮 What Happens Next (Realistic Take)
 
-Give a grounded prediction:
-(no sci-fi, no hype)
+No sci-fi predictions.
+Give grounded, slightly opinionated insight.
 
 ---
 
 ## 💬 Final Thoughts
 
-End with a thoughtful, slightly opinionated conclusion.
-
-Then ask ONE engaging question to the reader.
+* Give a strong, clear opinion
+* End with ONE thought-provoking question
 
 ---
 
-## OUTPUT RULES
+## ⚡ OPTIONAL EDGE (Use only if it fits naturally)
 
-* Return clean markdown only
-* No placeholders
-* No repetition
-* No “AI-style” phrases like “in today’s rapidly evolving landscape”
-* Make it feel like a blog someone would actually share
+* You MAY reference past similar hype cycles
+* You MAY challenge company narratives
+* But DO NOT force drama or fake controversy
 
+---
+
+## 🚫 HARD RULES
+
+* No generic AI phrases (e.g. “in today’s fast-paced world”)
+* No filler content
+* No fake Twitter-style reactions
+* No repeating headlines as content
+
+---
+
+Return clean markdown only.
 """
 
 
