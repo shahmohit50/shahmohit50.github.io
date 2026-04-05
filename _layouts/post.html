@@ -4,23 +4,63 @@ show_page_intro: false
 page_class: page-post
 ---
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | xml_escape }}",
+    "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 | xml_escape }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "url": "{{ page.url | absolute_url }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://shahmohit50.github.io/#person",
+      "name": "Mohitraj Shah",
+      "alternateName": ["Mohit Shah", "Mohit"],
+      "url": "https://shahmohit50.github.io/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://shahmohit50.github.io/#person",
+      "name": "Mohitraj Shah",
+      "url": "https://shahmohit50.github.io/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://shahmohit50.github.io/img.png",
+        "width": 291,
+        "height": 507
+      }
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "{% if page.image %}{{ page.image | absolute_url }}{% else %}https://shahmohit50.github.io/img.png{% endif %}"
+    }{% if page.tags and page.tags.size > 0 %},
+    "keywords": "{{ page.tags | join: ', ' }}, Mohitraj Shah, Mohit Shah"{% endif %}
+  }
+  </script>
+
 <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
 
-<article class="post-article">
+<article class="post-article" itemscope itemtype="https://schema.org/BlogPosting">
   <a href="/blog.html" class="post-back-link">&larr; Back to all posts</a>
 
   {% assign post_words = content | number_of_words %}
   {% assign post_minutes = post_words | divided_by: 200 | plus: 1 %}
   <header class="post-header">
     <p class="post-kicker">{{ page.date | date: "%B %d, %Y" }}</p>
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
 
     <p class="post-meta">
-      {% if page.author %}By {{ page.author }} &middot; {% endif %}{{ post_minutes }} min read
+      By <a href="https://shahmohit50.github.io/" itemprop="author" itemscope itemtype="https://schema.org/Person" style="color:inherit; text-decoration:underline;"><span itemprop="name">Mohitraj Shah</span></a> &middot; {{ post_minutes }} min read
     </p>
 
     {% if page.description %}
-      <p class="post-description">{{ page.description }}</p>
+      <p class="post-description" itemprop="description">{{ page.description }}</p>
     {% endif %}
   </header>
 

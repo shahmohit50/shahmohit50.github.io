@@ -56,16 +56,21 @@
         "name": "Mohitraj Shah",
         "givenName": "Mohitraj",
         "familyName": "Shah",
-        "alternateName": "Mohit Shah",
+        "alternateName": ["Mohit Shah", "Mohit", "Mohitraj", "Mohit Shah Mumbai", "Mohitraj Shah Developer"],
         "url": "https://shahmohit50.github.io/",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://shahmohit50.github.io/"
+        },
         "image": {
             "@type": "ImageObject",
             "url": "https://shahmohit50.github.io/img.png",
             "width": 291,
-            "height": 507
+            "height": 507,
+            "caption": "Mohitraj Shah - Full Stack Developer and SAP Expert from Mumbai, India"
         },
         "jobTitle": "Full Stack Developer & SAP Expert",
-        "description": "Full Stack Developer with 3+ years of SAP development experience. Specialist in React, Node.js, JavaScript, and ABAP programming.",
+        "description": "Mohitraj Shah (also known as Mohit Shah) is a Full Stack Developer with 3+ years of SAP development experience based in Mumbai, India. Specialist in React, Node.js, JavaScript, and ABAP programming.",
         "worksFor": {
             "@type": "Organization",
             "name": "Vistex Asia Pacific LTD",
@@ -94,18 +99,26 @@
             "Web Development",
             "REST APIs",
             "Git",
-            "SQL"
+            "SQL",
+            "Web Development Mumbai",
+            "SAP ABAP"
         ],
         "sameAs": [
             "https://github.com/shahmohit50",
             "https://linkedin.com/in/shahmohit50",
-            "https://shahmohit50.github.io/blog.html"
+            "https://shahmohit50.github.io/blog.html",
+            "https://shahmohit50.github.io/mohit-shah.html",
+            "mailto:shahmohit50@gmail.com"
         ],
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Mumbai",
             "addressRegion": "Maharashtra",
-            "addressCountry": "India"
+            "addressCountry": "IN"
+        },
+        "nationality": {
+            "@type": "Country",
+            "name": "India"
         },
         "email": "shahmohit50@gmail.com"
     }
@@ -115,12 +128,80 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": "https://shahmohit50.github.io/#website",
-        "name": "Mohitraj Shah Portfolio",
+        "name": "Mohitraj Shah — Official Portfolio",
+        "alternateName": "Mohit Shah Portfolio",
         "url": "https://shahmohit50.github.io/",
-        "description": "Portfolio of Mohitraj Shah - Full Stack Developer and SAP Expert based in Mumbai, India",
+        "description": "Official portfolio of Mohitraj Shah (Mohit Shah) — Full Stack Developer and SAP Expert based in Mumbai, India",
         "publisher": {
             "@id": "https://shahmohit50.github.io/#person"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://shahmohit50.github.io/blog.html?q={search_term_string}",
+            "query-input": "required name=search_term_string"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Mohitraj Shah",
+                "item": "https://shahmohit50.github.io/"
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Who is Mohitraj Shah?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mohitraj Shah (also known as Mohit Shah) is a Full Stack Developer and SAP Expert based in Mumbai, India. He has 3+ years of professional experience as a SAP Developer at Vistex Asia Pacific LTD and specializes in React, Node.js, JavaScript, and ABAP development."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does Mohit Shah do?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mohit Shah (full name: Mohitraj Shah) is a software engineer specializing in Full Stack web development and SAP ABAP programming. He builds scalable web applications using React, Node.js, Express.js, and MongoDB, and has extensive experience in enterprise SAP system integration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where is Mohitraj Shah located?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mohitraj Shah is based in Mumbai, Maharashtra, India. He graduated from Thakur College of Engineering and Technology, Mumbai in 2018 with a degree in IT Engineering."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I hire Mohit Shah as a developer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can contact Mohitraj Shah (Mohit Shah) via email at shahmohit50@gmail.com, through his LinkedIn profile at linkedin.com/in/shahmohit50, or by using the contact form on his portfolio at shahmohit50.github.io."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Mohitraj Shah's GitHub?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mohitraj Shah's GitHub profile is github.com/shahmohit50. He shares his full stack development projects, open source contributions, and code experiments there."
+                }
+            }
+        ]
     }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -198,19 +279,19 @@
             </div>
         </section>
         
-        <section id="about">
+        <section id="about" itemscope itemtype="https://schema.org/Person">
             <div class="container">
                 <div class="section-header reveal">
                     <div class="section-badge">About Me</div>
-                    <h2 class="section-title">Crafting Digital <span class="highlight">Experiences</span></h2>
-                    <p class="section-desc">Passionate about building scalable solutions and continuously expanding my technical expertise</p>
+                    <h2 class="section-title">About <span class="highlight">Mohitraj Shah</span></h2>
+                    <p class="section-desc">Full Stack Developer &amp; SAP Expert — also known as <strong itemprop="alternateName">Mohit Shah</strong>, based in Mumbai, India</p>
                 </div>
                 <div class="about-card reveal">
                     <p class="about-text">
-                        I'm a <span class="accent">Full Stack Developer</span> with <strong>3+ years of professional experience</strong> as a SAP Developer at <strong>Vistex Asia Pacific LTD</strong>. Currently transitioning into full stack development, I bring a unique combination of enterprise software expertise and modern web development skills.
+                        I'm <span itemprop="name"><strong>Mohitraj Shah</strong></span> — a <span class="accent" itemprop="jobTitle">Full Stack Developer</span> with <strong>3+ years of professional experience</strong> as a SAP Developer at <strong itemprop="worksFor">Vistex Asia Pacific LTD</strong>. Currently transitioning into full stack development, I bring a unique combination of enterprise software expertise and modern web development skills.
                     </p>
                     <p class="about-text">
-                        I graduated in <strong>2018</strong> from <strong>Thakur College of Engineering and Technology, Mumbai</strong> with a degree in <strong>IT Engineering</strong>. I'm passionate about building scalable web applications and continuously expanding my technical skillset.
+                        I graduated in <strong>2018</strong> from <strong itemprop="alumniOf">Thakur College of Engineering and Technology, Mumbai</strong> with a degree in <strong>IT Engineering</strong>. I'm passionate about building scalable web applications and continuously expanding my technical skillset.
                     </p>
                     <p class="about-text">
                         Currently enrolled at <span class="accent">Geekster</span> to accelerate my transition and master advanced full stack technologies including React, Node.js, and modern JavaScript frameworks.
@@ -601,6 +682,62 @@
                 </div>
             </div>
         </section>
+        <section id="faq" aria-label="FAQ about Mohitraj Shah" style="padding: 5rem 0; background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-badge">FAQ</div>
+                    <h2 class="section-title">About <span class="highlight">Mohit Shah</span></h2>
+                    <p class="section-desc">Common questions about Mohitraj Shah — Full Stack Developer from Mumbai</p>
+                </div>
+                <div class="about-card reveal" style="max-width: 800px; margin: 0 auto;">
+                    <details style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem;" open>
+                        <summary style="cursor:pointer; font-weight:600; font-size:1.1rem; color: var(--text-primary, #fff); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+                            Who is Mohitraj Shah?
+                            <span style="opacity:0.5; font-size:1.4rem;">+</span>
+                        </summary>
+                        <p class="about-text" style="margin-top:1rem;">
+                            <strong>Mohitraj Shah</strong> (commonly referred to as <strong>Mohit Shah</strong>) is a Full Stack Developer and SAP Expert based in <strong>Mumbai, India</strong>. With 3+ years at Vistex Asia Pacific LTD, he specialises in React, Node.js, JavaScript, and ABAP — bridging enterprise SAP systems with modern web technologies.
+                        </p>
+                    </details>
+                    <details style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem;">
+                        <summary style="cursor:pointer; font-weight:600; font-size:1.1rem; color: var(--text-primary, #fff); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+                            What does Mohit Shah specialise in?
+                            <span style="opacity:0.5; font-size:1.4rem;">+</span>
+                        </summary>
+                        <p class="about-text" style="margin-top:1rem;">
+                            <strong>Mohit Shah</strong> (Mohitraj Shah) specialises in full stack web development using the MERN stack — MongoDB, Express.js, React, and Node.js. He also has deep expertise in SAP ABAP programming, data migration, and enterprise system integration built up over his career in Mumbai.
+                        </p>
+                    </details>
+                    <details style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem;">
+                        <summary style="cursor:pointer; font-weight:600; font-size:1.1rem; color: var(--text-primary, #fff); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+                            How can I hire Mohitraj Shah?
+                            <span style="opacity:0.5; font-size:1.4rem;">+</span>
+                        </summary>
+                        <p class="about-text" style="margin-top:1rem;">
+                            You can reach <strong>Mohitraj Shah</strong> via email at <a href="mailto:shahmohit50@gmail.com" style="color:inherit;">shahmohit50@gmail.com</a>, through <a href="https://linkedin.com/in/shahmohit50" target="_blank" rel="noopener noreferrer" style="color:inherit;">LinkedIn</a>, or by using the contact form above. He is actively open to full stack developer roles and freelance projects.
+                        </p>
+                    </details>
+                    <details style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem;">
+                        <summary style="cursor:pointer; font-weight:600; font-size:1.1rem; color: var(--text-primary, #fff); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+                            Where can I see Mohit Shah's work?
+                            <span style="opacity:0.5; font-size:1.4rem;">+</span>
+                        </summary>
+                        <p class="about-text" style="margin-top:1rem;">
+                            <strong>Mohit Shah's</strong> projects are available on <a href="https://github.com/shahmohit50" target="_blank" rel="noopener noreferrer" style="color:inherit;">GitHub (github.com/shahmohit50)</a>. His portfolio showcases full stack applications built with React, Node.js, and MongoDB, as well as SAP ABAP enterprise solutions developed during his career in Mumbai.
+                        </p>
+                    </details>
+                    <details style="margin-bottom: 0; padding-bottom: 0;">
+                        <summary style="cursor:pointer; font-weight:600; font-size:1.1rem; color: var(--text-primary, #fff); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+                            Is Mohitraj Shah the same as Mohit Shah?
+                            <span style="opacity:0.5; font-size:1.4rem;">+</span>
+                        </summary>
+                        <p class="about-text" style="margin-top:1rem;">
+                            Yes — <strong>Mohitraj Shah</strong> and <strong>Mohit Shah</strong> refer to the same person. Mohitraj is the full given name, while Mohit Shah is the commonly used short form. He is a software developer based in Mumbai, India, with online profiles at <a href="https://github.com/shahmohit50" target="_blank" rel="noopener noreferrer" style="color:inherit;">GitHub</a> and <a href="https://linkedin.com/in/shahmohit50" target="_blank" rel="noopener noreferrer" style="color:inherit;">LinkedIn</a> under the username <em>shahmohit50</em>.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer class="footer">
@@ -630,7 +767,7 @@
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2024 Mohitraj Shah. All rights reserved.</p>
+                <p class="footer-copyright">© 2025 Mohitraj Shah (Mohit Shah). All rights reserved.</p>
                 <p class="footer-made">Made with ❤️ in Mumbai, India</p>
                 <div class="footer-back" onclick="scrollToTop()">
                     <span>Back to top</span>
