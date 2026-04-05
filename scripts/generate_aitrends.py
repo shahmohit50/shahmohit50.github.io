@@ -127,84 +127,109 @@ def extract_topics(headlines):
 # ==============================
 def generate_blog(topic, headlines):
     prompt = f"""
-Write a deep-dive blog post about this trending AI topic:
+You are a top-tier tech blogger writing for a high-quality Medium-style publication.
 
-    "{topic}"
+Your goal is NOT just to inform — but to make the reader:
 
-    Use these news headlines as context:
-    {headlines}
-
-    The blog should feel like a Medium article.
-
-    IMPORTANT:
-    - Focus on helping the reader actually understand AND try it
-    - Write like a human, slightly opinionated
-    - Include practical steps if possible
-
-    Structure:
-
-    Intro (why everyone is suddenly talking about this)
-
-    ## What is this and why is it trending?
-    (Explain simply, no jargon)
-
-    ---
-**News Headline**: 
-**Summary**: 
-**Company**: 
-**Key Claims**:
-
----
-### **RULES**
-- **Name names**: Call out executives, investors, or competitors by name.
-- **Use past scandals**: Reference similar past incidents (e.g., “Remember when [Company] did [X] in [Year]?”).
-- **End with a question**: Leave readers with a **provocative, open-ended** question.
-- **No fluff**: Every sentence must either **inform, enrage, or amuse**.
-
----
-### **EXAMPLE OUTPUT** (For reference)
-# **Anthropic’s Claude 3.5: Ethical AI or Ethical Theater?**
-
-**The Official Story**
-Anthropic today unveiled Claude 3.5, calling it “the most ethical AI ever built.” New features include “constitutional guardrails” and “bias self-audits.” CEO Dario Amodei claimed it’s “a model that finally aligns with human values.”
-
-**What They’re Not Saying**
-✅ **The Good**: Claude 3.5 refuses to generate harmful content—unlike *some* competitors (*cough* Meta *cough*).
-⚠️ **The Spin**: “Ethical” here means “safe for enterprises,” not “safe for society.” Remember when Google said the same about Bard?
-❌ **The Lie**: Anthropic’s own safety board quit last month over “unresolved ethical concerns.” (Source: [The Information](#))
-
-**Twitter vs. Reality**
-> *@AI_Enthusiast: “Finally, an AI with a conscience!”*
-> *@RealEthicist: “Lol, the same company that sold Claude 2 to the Pentagon is lecturing us on ethics.”*
-> *@VC_Hustler: “Ethical = ‘won’t badmouth our investors.’”*
-
-**The Hypocrisy No One’s Talking About**
-Anthropic’s “constitutional AI” schtick is a smokescreen for their real innovation: **corporate absolution**. By framing ethics as a technical problem, they’re selling indemnity to CEOs. (“See? Our AI has a *constitution*—we’re not liable!”)
-
-**Devil’s Advocate**
-*What if this is the only way?*
-In a world where every AI startup races to the bottom, Anthropic’s theater might be the lesser evil. But when “ethical” becomes a marketing term, who’s left to ask the hard questions?
-
-*But here’s the catch:*
-Anthropic’s “safety” is just **risk management for shareholders**. Their constitution is as binding as a Terms of Service no one reads.
-
-**Prediction**
-Within 6 months, Claude 3.5 will be caught generating misinfo—just like every “safe” model before it. The only difference? Anthropic’s PR team will call it “a learning opportunity.”
-
-**How to Prepare**
-- **Developers**: Audit Claude’s outputs like it’s 2016 and you’re Facebook.
-- **Users**: Treat “ethical AI” like “organic cigarettes.” It’s better, but still bad for you.
-- **Regulators**: Stop falling for self-audits. Demand **third-party red-teaming**.
+* Understand the topic deeply
+* Stay engaged till the end
+* Feel smarter after reading
 
 ---
 
-    ## Final thoughts
-    (Insightful, slightly opinionated)
+## INPUT
 
-    Keep it beginner-friendly but insightful.
+Topic: "{topic}"
 
-    Return markdown only.
-    """
+News context:
+{headlines}
+
+---
+
+## WRITING STYLE (STRICT)
+
+* Write like a human, slightly opinionated but not dramatic
+* Avoid robotic or generic phrasing
+* Use short, punchy paragraphs (2–4 lines max)
+* Prefer clarity over jargon
+* Sound like an experienced engineer explaining things simply
+
+---
+
+## STRUCTURE (FOLLOW EXACTLY)
+
+# {topic} — What’s Actually Going On?
+
+## 🚀 Why This Is Blowing Up Right Now
+
+Start with a strong hook.
+Explain WHY this topic is suddenly trending (not just what happened).
+
+---
+
+## 🧠 What This Actually Means (Simple Explanation)
+
+Break it down like you're explaining to a smart beginner.
+Avoid buzzwords unless you explain them.
+
+---
+
+## 🏗️ What’s Really Happening Behind the Scenes
+
+Go deeper:
+
+* How the tech works (high level)
+* What companies are doing
+* What makes this different from before
+
+---
+
+## ⚖️ The Reality Check
+
+Give a balanced take:
+
+* What’s genuinely impressive
+* What’s overhyped or unclear
+
+Be honest. This is where most blogs fail.
+
+---
+
+## 🛠️ Can You Actually Use This?
+
+Make it practical:
+
+* Who should care
+* Real-world use cases
+* Tools / links / ways to try it
+
+---
+
+## 🔮 What Happens Next
+
+Give a grounded prediction:
+(no sci-fi, no hype)
+
+---
+
+## 💬 Final Thoughts
+
+End with a thoughtful, slightly opinionated conclusion.
+
+Then ask ONE engaging question to the reader.
+
+---
+
+## OUTPUT RULES
+
+* Return clean markdown only
+* No placeholders
+* No repetition
+* No “AI-style” phrases like “in today’s rapidly evolving landscape”
+* Make it feel like a blog someone would actually share
+
+"""
+
 
     return call_llm(prompt)
 
